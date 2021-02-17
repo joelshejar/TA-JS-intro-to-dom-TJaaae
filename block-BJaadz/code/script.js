@@ -34,7 +34,8 @@ heading.style.fontSize = '3rem'
 let random = document.querySelector('.image')
 random.style.border = '2px solid purple'
 // Hide the box number 17 (last box).
-
+let box17 = document.querySelector(".seventeen")
+box17.remove()
 // Change the border of all the hr element from solid to dashed type
 allHrsArray.map(x => {
   x.style.border = "dashed"
@@ -45,7 +46,7 @@ let para = document.createElement('p')
 para.innerText = "querySelector returns an element you can maupulate but querySelectorAll returns the collection of elements in array kind of structure."
 // Remove all the elements from box 1
 let rm = document.querySelector(".one")
-rm.remove()
+rm.innerHTML = ""
 // Replace all the elements inside box 1 with the para (you created above)
 rm.append(para)
 /* Walking the DOM
@@ -93,9 +94,14 @@ box5.style.borderRadius = "10px"
 let box6 = document.querySelector(".six")
 box6.style.color = "black"
 // Change the font size of the para inside box 1 to 0.8rem.
-
+rm.style.fontSize = "0.8rem"
 // Change the background of all the alternate boxes (1, 3, 5, ....) to aliceblue
-
+let allBox = document.querySelectorAll(".box")
+allBox.forEach((x, index) => {
+  if((index+1) % 2 !=0){
+    x.style.background = "aliceblue"
+  }
+})
 // add a class named "awesome-box" to the box 6 using classList property of DOM element.
 box6.classList.add("awesome-box")
 // Using the toggle classList property toggle the class `awesome-box` from box 2
@@ -121,21 +127,23 @@ btn.style.padding = '0.5rem 1rem'
 let box9 = document.querySelector(".nine")
 box9.append(btn)
 // Create a img element with src value `https://images.unsplash.com/photo-1592500595497-d1f52a40b207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80` and store in a variable named imgElm
-
+let imgElm = document.createElement("img")
+imgElm.src = `https://images.unsplash.com/photo-1592500595497-d1f52a40b207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80`
 // Select the box 7 using class seven
 let box7 = document.querySelector('.seven')
 // Remove all the elements form box seven
-
+box7.innerHTML = ""
 // Append the imgElm to the box no 7
-
+box7.append(imgElm)
 // Change the width and height of the image to `100%`
-
+imgElm.height = "100%"
+imgElm.width = "100%"
 // Select the box 5 using class five
 console.log(box5)
 // Create an input element
 let input = document.createElement("input")
 // Change the placeholder property of the input element to "Enter you email!"
-
+input.placeholder = "Enter you email!"
 // Append the input element to the box 5 you selected above
 box5.append(input)
 // Create two anchor (a) element with  the text of `AltCampus` and `Google`
@@ -144,7 +152,8 @@ let a2 = document.createElement("a")
 a1.innerText = "AltCampus"
 a2.innerText = "Google"
 // Change the href property of the anchor elements to `https://altcampus.school` and `https://google.com`
-
+a1.href = `https://altcampus.school`
+a2.href = `https://google.com`
 // Append both the elements to box 5 you selected above.
 box5.append(a1)
 box5.append(a2)
