@@ -42,15 +42,11 @@ createInputElm('Your age', 'number'); //<label>Your age: <input type="number"></
 // 3. Create a function named `createList` that accept and array of data like ['Mango', 'Apple', 'Banana'] and returns
 // the html for the link like <ul> <li>Mango</li>  <li>Apple</li>  <li>Banana</li> </ul>
 // Your code goes here
-let createList = function(arr){
-  var ul = document.createElement("ul")
-  var li = document.createElement("li")
-  arr.forEach(element => {
-    console.log(element)
-    li.innerText = element
-    ul.append(li)
-  });
-  console.log(ul)
+function createList(arr = []){
+  let html = `<ul>
+    ${arr.map((elm) => `<li>${elm}</li>`).join("")}
+  </ul`
+  return html
 }
 
 // TEST
@@ -70,7 +66,17 @@ let createList = function(arr){
 */
 
 // Your code goes here
-
+function createTodoList(arr = []){
+  let html = `<ul>
+    ${arr.map((elm) => `<li>
+                          <p>${arr.name}</p>
+                          <input type="checkbox" ${arr.isDone ? "checked" : ""} name="" id="">
+                          <span>X</span>
+                        </li>`
+                        ).join("")}
+              </ul`
+  return html
+}
 // TEST
 // createTodoList([
 //   { name: 'Learn DOM', isDone: false },
